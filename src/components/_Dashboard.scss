@@ -1,0 +1,38 @@
+//
+
+.dashboard {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+
+  .button {
+    width: 100px;
+    height: 60px;
+  }
+
+  .list {
+    margin: 10px;
+    .list-item {
+    }
+  }
+
+  .garden {
+    width: 1200px;
+    height: 700px;
+    background-color: green;
+    margin: auto;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: auto;
+      height: 120px;
+      position: absolute;
+    }
+
+    @media screen and (max-width: 1300px) {
+      width: 100%;
+    }
+  }
+}
