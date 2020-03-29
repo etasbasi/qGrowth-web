@@ -21,27 +21,14 @@ import tree5 from "../assets/tree5.png";
 import tree6 from "../assets/tree6.png";
 import tree7 from "../assets/tree7.png";
 import tree8 from "../assets/tree8.png";
-import tree9 from "../assets/tree9.png";
-import tree10 from "../assets/tree10.png";
-import tree11 from "../assets/tree11.png";
-import tree12 from "../assets/tree12.png";
-import tree13 from "../assets/tree13.png";
+// import tree9 from "../assets/tree9.png";
+// import tree10 from "../assets/tree10.png";
+// import tree11 from "../assets/tree11.png";
+// import tree12 from "../assets/tree12.png";
+// import tree13 from "../assets/tree13.png";
 
 import "./_Dashboard.scss";
-const treeImages = [
-  tree1,
-  tree2,
-  tree3,
-  tree4,
-  tree5,
-  tree6,
-  tree7,
-  tree8,
-  tree9,
-  tree10,
-  tree11,
-  tree12
-];
+const treeImages = [tree1, tree2, tree3, tree4, tree5, tree6, tree7, tree8];
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -87,8 +74,8 @@ function Dashboard() {
 
   async function addTree() {
     let newTree = {
-      // image: treeImages[randomNumber(0, 11)],
-      image: tree13,
+      image: treeImages[randomNumber(0, 7)],
+      // image: tree13,
       x: randomNumber(0, gardenRef.current.clientWidth - 50),
       y: randomNumber(0, gardenRef.current.clientHeight - 180)
     };
