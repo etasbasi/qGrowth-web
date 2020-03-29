@@ -9,6 +9,7 @@ import {
 } from "@zendeskgarden/react-chrome";
 import { Button } from "@zendeskgarden/react-buttons";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 import SmallIcon from "../assets/icon-small.png";
 
@@ -62,19 +63,26 @@ function Dashboard() {
   const [trees, setTrees] = useState([{ image: tree1, x: 10, y: 10 }]);
   const gardenRef = useRef();
 
-  function addTree() {
+  async function addTree() {
     let newTree = {
       image: treeImages[randomNumber(0, 1)],
       x: randomNumber(0, gardenRef.current.clientWidth - 50),
-      y: randomNumber(0, gardenRef.current.clientHeight - 100)
+      y: randomNumber(0, gardenRef.current.clientHeight - 180)
     };
 
     setTrees(trees.concat(newTree));
+    try {
+      await axios.post("https://dropent-backend.herokuapp.com/trees", {
+        x: newTree.x,
+        y: newTree.y
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
     <div className="dashboard">
-      {/* <button onClick={addTree}>Add tree</button> */}
       <div className="list" onClick={addTree}>
         <div className="list-item">
           <p>Yoga</p>
