@@ -3,7 +3,7 @@ import { Field, Label, Hint, Input, Message } from "@zendeskgarden/react-forms";
 import { Button } from "@zendeskgarden/react-buttons";
 import axios from "axios";
 
-import logo from "../assets/tree2.png";
+import logo from "../assets/icon-big.png";
 
 import { Link } from "react-router-dom";
 
@@ -55,12 +55,12 @@ export default function Register({ history }) {
     <div className="register">
       <form>
         <Field>
-          <img className="logo-container" src={logo} />
+          <img className="logo-container" src={logo} alt="" />
 
           <div className="input-container">
             <Label>Fisrt Name</Label>
             <Input
-              placeholder="FisrtName"
+              placeholder="First Name"
               value={firstName}
               onChange={e => setFirstName(e.target.value)}
             />
@@ -69,7 +69,7 @@ export default function Register({ history }) {
           <div className="input-container">
             <Label>Last Name</Label>
             <Input
-              placeholder="LastName"
+              placeholder="Last Name"
               value={lastName}
               onChange={e => setLastName(e.target.value)}
             />
