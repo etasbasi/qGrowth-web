@@ -29,7 +29,7 @@ export default function Register({ history }) {
       email === "" ||
       password === ""
     ) {
-      setError("Please, fill out the all forms");
+      setError("Please fill all the fields");
     } else {
       try {
         let result = await axios.post(
@@ -41,8 +41,6 @@ export default function Register({ history }) {
             password
           }
         );
-
-        // localStorage.setItem("token", `Bearer ${result.data.accessToken}`);
 
         history.push("/login");
       } catch (e) {
