@@ -1,45 +1,49 @@
 {
-  "name": "qgrowth",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@zendeskgarden/react-buttons": "^8.4.0",
-    "@zendeskgarden/react-chrome": "^8.4.0",
-    "@zendeskgarden/react-forms": "^8.4.0",
-    "@zendeskgarden/react-theming": "^8.4.0",
-    "axios": "^0.19.2",
-    "bootstrap": "^4.4.1",
-    "node-sass": "^4.13.1",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.0.0",
-    "react-dom": "^16.13.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.1",
-    "styled-components": "^5.0.1"
-  },
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "test": "jest --watchAll"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "jest": {
+    "preset": "jest-expo"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "dependencies": {
+    "@expo/vector-icons": "~10.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-native-fontawesome": "^0.2.3",
+    "@react-native-community/masked-view": "0.1.5",
+    "@react-navigation/bottom-tabs": "^5.0.0",
+    "@react-navigation/native": "^5.0.0",
+    "@react-navigation/stack": "^5.0.0",
+    "@react-navigation/web": "~1.0.0-alpha.9",
+    "axios": "^0.19.2",
+    "expo": "~36.0.0",
+    "expo-asset": "~8.0.0",
+    "expo-constants": "~8.0.0",
+    "expo-font": "~8.0.0",
+    "expo-web-browser": "~8.0.0",
+    "react": "~16.9.0",
+    "react-dom": "~16.9.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
+    "react-native-gesture-handler": "~1.5.0",
+    "react-native-material-ui": "^1.30.1",
+    "react-native-router-flux": "^4.2.0",
+    "react-native-safe-area-context": "0.6.0",
+    "react-native-screens": "2.0.0-alpha.12",
+    "react-native-svg": "^12.0.3",
+    "react-native-vector-icons": "^6.6.0",
+    "react-native-web": "~0.11.7",
+    "react-navigation": "^4.3.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-preset-expo": "~8.0.0",
+    "jest-expo": "~36.0.1"
+  },
+  "private": true
 }
