@@ -3,15 +3,17 @@ import { Field, Label, Hint, Input, Message } from "@zendeskgarden/react-forms";
 import { Button } from "@zendeskgarden/react-buttons";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
-
 import logo from "../assets/tree2.png";
+
+import { Link } from "react-router-dom";
 
 // 1. state - inside one component
 // 2. props - gets passed to different compoentns
 
 // getting props
-export default function Login({ history }) {
+export default function Register({ history }) {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,18 +23,28 @@ export default function Login({ history }) {
     setError("");
     setLoading(true);
 
-    if (email === "" || password === "") {
-      setError("The email or password is empty");
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === ""
+    ) {
+      setError("Please, fill out the all forms");
     } else {
       try {
         let result = await axios.post(
-          `https://dropent-backend.herokuapp.com/auth`,
-          { email, password }
+          `https://dropent-backend.herokuapp.com/users`,
+          {
+            firstName,
+            lastName,
+            email,
+            password
+          }
         );
 
-        localStorage.setItem("token", `Bearer ${result.data.accessToken}`);
+        // localStorage.setItem("token", `Bearer ${result.data.accessToken}`);
 
-        history.push("/");
+        history.push("/login");
       } catch (e) {
         setError(e.toString());
       }
@@ -42,10 +54,29 @@ export default function Login({ history }) {
   }
 
   return (
-    <div className="login">
+    <div className="register">
       <form>
         <Field>
-          <img className="logo-container" src={logo} alt="logo" />
+          <img className="logo-container" src={logo} />
+
+          <div className="input-container">
+            <Label>Fisrt Name</Label>
+            <Input
+              placeholder="FisrtName"
+              value={firstName}
+              onChange={e => setFirstName(e.target.value)}
+            />
+          </div>
+
+          <div className="input-container">
+            <Label>Last Name</Label>
+            <Input
+              placeholder="LastName"
+              value={lastName}
+              onChange={e => setLastName(e.target.value)}
+            />
+          </div>
+
           <div className="input-container">
             <Label>Email</Label>
             <Input
@@ -70,12 +101,11 @@ export default function Login({ history }) {
             className="submit-button"
             onClick={() => onSubmit()}
           >
-            Submit
+            Register
           </Button>
-          <Link className="createlink" to="/register">
-            Create an account
+          <Link className="createlink" to="/login">
+            Do you have already an account?
           </Link>
-
           <p className="error">{error}</p>
         </Field>
       </form>
