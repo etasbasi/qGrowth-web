@@ -33,7 +33,7 @@ export default function Register({ history }) {
     } else {
       try {
         let result = await axios.post(
-          `https://dropent-backend.herokuapp.com/users`,
+          `https://qgrowth-backend.herokuapp.com/users`,
           {
             firstName,
             lastName,

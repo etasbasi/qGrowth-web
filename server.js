@@ -11,8 +11,12 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "public")));
 
 app.use(express.static("/build"));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+app.get("/*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build/index.html"), function(err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
 
 const port = process.env.PORT || 5000;

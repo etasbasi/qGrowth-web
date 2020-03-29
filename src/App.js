@@ -11,8 +11,6 @@ const isAuthenticated = (() => {
   return localStorage.getItem("token") !== null;
 })();
 
-console.log(window.location.pathname);
-
 if (
   !isAuthenticated &&
   !window.location.pathname.includes("/login") &&

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import {
   Chrome,
   Body,
@@ -69,43 +69,78 @@ let Navbar = ({ history }) => {
 export default withRouter(Navbar);
 
 function Dashboard() {
-  const [trees, setTrees] = useState([{ image: tree1, x: 10, y: 10 }]);
+  const [trees, setTrees] = useState([]);
   const gardenRef = useRef();
 
-  async function addTree() {
+  async function addTree(image, index) {
     let newTree = {
-      image: treeImages[randomNumber(0, 7)],
-      // image: tree13,
+      image,
       x: randomNumber(0, gardenRef.current.clientWidth - 50),
       y: randomNumber(0, gardenRef.current.clientHeight - 180)
     };
 
+    console.log(newTree);
+
     setTrees(trees.concat(newTree));
     try {
-      await axios.post("https://dropent-backend.herokuapp.com/trees", {
-        x: newTree.x,
-        y: newTree.y
-      });
+      let imageType = await axios.post(
+        "https://qgrowth-backend.herokuapp.com/trees",
+        {
+          x: newTree.x,
+          y: newTree.y,
+          type: index
+        }
+      );
     } catch (e) {
       console.log(e);
     }
   }
 
+  const fetchTrees = useCallback(async () => {
+    try {
+      let result = await axios.get(
+        "https://qgrowth-backend.herokuapp.com/trees"
+      );
+      let tempTrees = result.data.map(tree => {
+        return {
+          image: treeImages[tree.type],
+          x: tree.x,
+          y: tree.y
+        };
+      });
+
+      setTrees(tempTrees);
+
+      console.log(tempTrees);
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchTrees();
+  }, [fetchTrees]);
+
+  let items = [
+    { name: "singing", image: treeImages[0] },
+    { name: "drawing", image: treeImages[1] },
+    { name: "stretching", image: treeImages[2] },
+    { name: "paingint", image: treeImages[3] },
+    { name: "exercise", image: treeImages[4] },
+    { name: "cleaning", image: treeImages[5] },
+    { name: "coding", image: treeImages[6] },
+    { name: "meditation", image: treeImages[7] }
+  ];
+
   return (
     <div className="dashboard">
-      <div className="list" onClick={addTree}>
-        <div className="list-item">
-          <p>Yoga</p>
-        </div>
-        <div className="list-item">
-          <p>Exercise</p>
-        </div>
-        <div className="list-item">
-          <p>Read</p>
-        </div>
-        <div className="list-item">
-          <p>Stretch</p>
-        </div>
+      <div className="list">
+        {items.map((item, index) => (
+          <div onClick={() => addTree(item.image, index)} className="list-item">
+            <p>{item.name}</p>
+            <img src={item.image} height="50" width="50" alt="" />
+          </div>
+        ))}
       </div>
       <div className="garden" ref={gardenRef}>
         {trees.map(tree => {
@@ -113,8 +148,7 @@ function Dashboard() {
             <img
               style={{ top: tree.y + "px", left: tree.x + "px" }}
               className="logo-container"
-              // src={tree.image}
-              src="https://cdn.discordapp.com/attachments/692034889939157086/693934884632395916/158551730027552412.png"
+              src={tree.image}
               alt="logo"
             />
           );

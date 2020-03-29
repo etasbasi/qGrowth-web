@@ -26,7 +26,7 @@ export default function Login({ history }) {
     } else {
       try {
         let result = await axios.post(
-          `https://dropent-backend.herokuapp.com/auth`,
+          `https://qgrowth-backend.herokuapp.com/auth`,
           { email, password }
         );
 
