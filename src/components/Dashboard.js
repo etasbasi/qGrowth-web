@@ -18,7 +18,6 @@ import tree1 from "../assets/tree1.png";
 import tree2 from "../assets/tree2.png";
 
 import "./_Dashboard.scss";
-
 const treeImages = [tree1, tree2];
 
 function randomNumber(min, max) {
