@@ -25,6 +25,7 @@ import tree9 from "../assets/tree9.png";
 import tree10 from "../assets/tree10.png";
 import tree11 from "../assets/tree11.png";
 import tree12 from "../assets/tree12.png";
+import tree13 from "../assets/tree13.png";
 
 import "./_Dashboard.scss";
 const treeImages = [
@@ -86,7 +87,8 @@ function Dashboard() {
 
   async function addTree() {
     let newTree = {
-      image: treeImages[randomNumber(0, 11)],
+      // image: treeImages[randomNumber(0, 11)],
+      image: tree13,
       x: randomNumber(0, gardenRef.current.clientWidth - 50),
       y: randomNumber(0, gardenRef.current.clientHeight - 180)
     };
@@ -124,7 +126,8 @@ function Dashboard() {
             <img
               style={{ top: tree.y + "px", left: tree.x + "px" }}
               className="logo-container"
-              src={tree.image}
+              // src={tree.image}
+              src="https://cdn.discordapp.com/attachments/692034889939157086/693934884632395916/158551730027552412.png"
               alt="logo"
             />
           );
