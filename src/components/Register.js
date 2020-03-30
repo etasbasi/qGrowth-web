@@ -56,9 +56,9 @@ export default function Register({ history }) {
       <form>
         <Field>
           <img className="logo-container" src={logo} alt="" />
-
+          <div className="slogan">Stay active during quarantine!</div>
           <div className="input-container">
-            <Label>Fisrt Name</Label>
+            <Label>First Name</Label>
             <Input
               placeholder="First Name"
               value={firstName}

@@ -21,7 +21,18 @@
   }
 
   .logo-container {
-    margin-left: 50px;
+    // margin-left: 50px;
+    width: 400px;
+    height: auto;
+  }
+
+  .slogan {
+    font-family: "Indie Flower", cursive;
+    font-size: 2em;
+    left: 70px;
+    bottom: 45px;
+    position: relative;
+    transform: rotate(-5deg);
   }
 
   .createlink {

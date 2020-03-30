@@ -5,7 +5,7 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 
-import logo from "../assets/tree2.png";
+import logo from "../assets/icon-big.png";
 
 // 1. state - inside one component
 // 2. props - gets passed to different compoentns
@@ -46,6 +46,7 @@ export default function Login({ history }) {
       <form>
         <Field>
           <img className="logo-container" src={logo} alt="logo" />
+          <div className="slogan">Stay active during quarantine!</div>
           <div className="input-container">
             <Label>Email</Label>
             <Input

@@ -8,6 +8,13 @@
     height: 60px;
   }
 
+  .tutorial {
+    position: absolute;
+    left: 300px;
+    font-family: "Indie Flower", cursive;
+    font-size: 2em;
+  }
+
   .list {
     margin: 10px 0;
     .list-item {
@@ -55,5 +62,11 @@
     @media screen and (max-width: 1300px) {
       width: 100%;
     }
+  }
+
+  .delete-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }

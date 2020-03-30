@@ -9,6 +9,7 @@
     "@zendeskgarden/react-buttons": "^8.4.0",
     "@zendeskgarden/react-chrome": "^8.4.0",
     "@zendeskgarden/react-forms": "^8.4.0",
+    "@zendeskgarden/react-loaders": "^8.4.0",
     "@zendeskgarden/react-theming": "^8.4.0",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
