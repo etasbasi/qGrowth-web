@@ -1,7 +1,7 @@
 To run:
 
 ```
-yarn && yarn start
+yarn && yarn start:dev
 ```
 
 or with npm
